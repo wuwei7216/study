@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number[]} nums
+     * @return {void} Do not return anything, modify nums in-place instead.
+     */
+    var nextPermutation = function (nums) {
+      let minTemp = 0
+      for (let l = nums.length, i = l - 2; i >= 0; i--) {
+        if (nums[i + 1] > nums[i]) {
+          let j = l - 1
+          while (j > i) {
+            if (nums[i] < nums[j]) {
+              const temp = nums[i]
+              nums[i] = nums[j]
+              nums[j] = temp
+              const tempArr = nums.slice(i + 1, l)
+              nums.splice(i + 1, tempArr.length, ...tempArr.reverse())
+              return nums
+            }
+            j--
+          }
+          // 如果循环完了还没返回  说明
+        }
+      }
+      return nums.reverse()
+    };
+    console.log(nextPermutation([1,2]))
+  </script>
+</body>
+
+</html>
