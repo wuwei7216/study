@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 冒泡排序 两两比较 将大的后移
+    function sort(arr) {
+      // 共要比较n-1轮
+      for (let i = 0, l = arr.length; i < l - 1; i++) {
+        let doSwap = false
+        // 每轮循环 n -i-1次
+        for (let j = 0; j < l - i - 1; j++) {
+          const x = arr[j];
+          const y = arr[j + 1];
+          if (x > y) {
+            arr[j] = y
+            arr[j + 1] = x
+            doSwap = true
+          }
+        }
+        if (!doSwap) {
+          return arr
+        }
+      }
+      return arr
+    }
+    console.log(sort([1,4,2,8,44,23,5,7,33,45,78]))
+    // 时间复杂度 : (n - 1) * (n-1 + n-2 + n-3 + ... + 2 + 1) => O(n^2)
+    // 最坏时间复杂度 O(n^2) 最好时间复杂度 O(n) 平均 O(n^2)
+
+  </script>
+</body>
+</html>
