@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 选择排序 每次循环选择最小的值 往前放
+    function sort(arr) {
+      const temp = Number.MIN_SAFE_INTEGER
+      // 做n-l轮选择即可排完
+      for (let i = 0, l = arr.length; i < l - 1; i++) {
+        // 用arr[i] 与其后面所有值做比较，比arr[i] 小的话则交换位置
+        for (let j = i; j < l; j++) {
+          if (arr[i] > arr[j]) {
+            temp = arr[i]
+            arr[i] = arr[j]
+            arr[j] = temp
+          }
+        }
+      }
+      return arr
+    }
+    console.log(sort([5,6,7,1,6,8,45,21,85,56,5,4,7]))
+    // 时间复杂度O(n^2)
+  </script>
+</body>
+</html>

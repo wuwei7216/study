@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // 插入排序
+    function sort(arr) {
+      let preIndex = 0, tmp = 0
+      // 需要循环n-1轮 第一轮从索引为1的开始
+      for (let i = 1, l = arr.length; i < l; i++) {
+        preIndex = i - 1
+        // 与前面的数做比较，比前面一个数小 则交换位置
+        while (arr[preIndex + 1] < arr[preIndex] && arr[preIndex] >= 0) {
+          tmp = arr[preIndex + 1]
+          arr[preIndex + 1] = arr[preIndex]
+          arr[preIndex] = tmp
+          preIndex--
+        }
+      }
+      return arr
+    }
+    console.log(sort([1,5,2,6,3,8,4,2,9,5,2,56,89,45,11]))
+    // 时间复杂度O(n^2) (n-1) * (1 + 2 + ... + n-2 + n-1) 最坏情况   最好情况  不用执行while 所以为O(n)    空间复杂度O(1)
+  </script>
+  
+</body>
+</html>
