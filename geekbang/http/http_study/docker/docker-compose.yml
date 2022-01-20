@@ -1,0 +1,40 @@
+# chrono 2021-02
+#
+# docker-compose run --rm http_study
+# TAG=alpine docker-compose run --rm http_study
+#
+# https://docs.docker.com/compose/compose-file/compose-file-v3/
+#
+# curl https://www.chrono.com/23-1 -vk
+# curl https://www.chrono.com/30-1 -k --tlsv1.2
+# curl https://www.chrono.com/30-1 -k --tls-max 1.2
+# curl https://www.metroid.net:8443/30-1 -k
+
+version: "3"   # 1.13+
+#version: "2"    # 1.10+
+
+services:
+
+  http_study:
+
+    #image: chronolaw/http_study
+    #image: chronolaw/http_study:alpine
+    #image: chronolaw/http_study:bionic
+    image: "chronolaw/http_study:${TAG:-latest}"
+
+    container_name: http_study
+
+    #ports:
+    #  - 80:80
+    #  - 8080:8080
+
+    working_dir: /root/http_study/www
+
+    #command: /bin/bash
+    #command : '/bin/bash -c "cd /root/http_study/www && ./run.sh start && /bin/bash"'
+    command : /bin/bash -c "./run.sh start && /bin/bash"
+
+    extra_hosts:
+      - "www.chrono.com:127.0.0.1"
+      - "www.metroid.net:127.0.0.1"
+      - "origin.io:127.0.0.1"
