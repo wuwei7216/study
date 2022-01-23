@@ -1,3 +1,0 @@
-2022/01/21 14:41:38 [error] 324#11744: *1 CreateFile() "./html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "127.0.0.1", referrer: "http://127.0.0.1/"
-2022/01/21 14:48:27 [notice] 10412#1576: signal process started
-2022/01/21 14:52:09 [error] 5612#10872: *2 CreateFile() "./html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "www.chrono.com", referrer: "http://www.chrono.com/"
