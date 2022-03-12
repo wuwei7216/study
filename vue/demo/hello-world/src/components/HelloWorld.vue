@@ -3,6 +3,15 @@
     <h1 :[testa+testb]="456">{{ msg }}</h1>
     <div @click="myClick">点击</div>
     <div>{{temData}}</div>
+    <hr>
+    <div v-if="false" v-show="true">我是if</div>
+    <hr>
+    <div>
+      <!-- eslint-disable-next-line -->
+      <li v-for="(value, name, index) in myObject" :key="value" v-if="false">
+        {{ index }}. {{ name }}: {{ value }}
+      </li>
+    </div>
   </div>
 </template>
 
@@ -15,7 +24,11 @@ export default {
   data() {
     return {
       testa: 'i',
-      testb: 'd'
+      testb: 'd',
+      myObject: {
+        a: 'hh',
+        b: 'xx'
+      }
     }
   },
   mounted() {
