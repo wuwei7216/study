@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1 :[testa+testb]="456">{{ msg }}</h1>
-    <div @click="myClick">点击</div>
+    <div @click="myClick(123)">点击</div>
     <div>{{temData}}</div>
     <hr>
     <div v-if="false" v-show="true">我是if</div>
@@ -12,12 +12,24 @@
         {{ index }}. {{ name }}: {{ value }}
       </li>
     </div>
+    <hr>
+    <my-component v-model:description.xxxsss="myText">
+      <template v-slot:default="slotProps">
+        <!-- <i class="fas fa-check"></i> -->
+        <span class="green">{{ slotProps }}</span>
+      </template>
+    </my-component>
+
   </div>
 </template>
 
 <script>
+import MyComponent from './MyComponent.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    'my-component': MyComponent
+  },
   props: {
     msg: String
   },
@@ -25,6 +37,7 @@ export default {
     return {
       testa: 'i',
       testb: 'd',
+      myText: 'hhh',
       myObject: {
         a: 'hh',
         b: 'xx'
@@ -47,9 +60,9 @@ export default {
     }
   },
   methods: {
-    myClick() {
-      console.log('22222222')
-      this.temData = 2
+    myClick(nem, event) {
+      console.log(nem)
+      console.log(event)
     }
   }
 }
