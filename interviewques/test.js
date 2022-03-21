@@ -101,11 +101,44 @@
 // console.log(Dog.prototype.constructor)
 // Dog.dog()
 
-var reg = /([a-z]+)(\d+)/;							//匹配一个或多个字母，和一个或多个数字
-			reg.test('hello123');						//ture
-			console.log(RegExp)						//输出 hello，即匹配的第一个括号里的内容
-			// console.log(RegExp.$2)						//输出 123  ，即匹配的第二个括号里的内容
+// var reg = /([a-z]+)(\d+)/;							//匹配一个或多个字母，和一个或多个数字
+// 			reg.test('hello123');						//ture
+// 			console.log(RegExp)						//输出 hello，即匹配的第一个括号里的内容
+// 			// console.log(RegExp.$2)						//输出 123  ，即匹配的第二个括号里的内容
 
-import testwu from './test2'
-console.log(testwu())
-console.log(testwu())
+// import testwu from './test2'
+// console.log(testwu())
+// console.log(testwu())
+
+
+// var obj = new Proxy({}, {
+// 	get: function (target, propKey, receiver) {
+// 		console.log(target)
+// 		console.log(propKey)
+// 		console.log(receiver)
+// 	  return Reflect.get(target, propKey, receiver);
+// 	},
+// 	set: function (target, propKey, value, receiver) {
+// 		console.log('--------------------')
+// 		console.log(target)
+// 		console.log(propKey)
+// 		console.log(value)
+// 		console.log(receiver)
+// 	  return Reflect.set(target, propKey, value, receiver);
+// 	}
+//   });
+
+//   obj.count = 1
+//   obj.count
+var obj = {a: 1}
+var oldVal = obj.a
+var test = Object.defineProperty(obj, 'a', {
+	get() {
+		return oldVal
+	}
+})
+
+console.log(test === obj)
+
+console.log(obj.a)
+

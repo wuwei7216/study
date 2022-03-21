@@ -19,12 +19,15 @@
         <span class="green">{{ slotProps }}</span>
       </template>
     </my-component>
+    <hr>
+    <div>1234-{{count}}</div>
 
   </div>
 </template>
 
 <script>
 import MyComponent from './MyComponent.vue'
+import { ref } from 'vue'
 export default {
   name: 'HelloWorld',
   components: {
@@ -33,6 +36,18 @@ export default {
   props: {
     msg: String
   },
+  setup() {
+      const count = ref(0)
+      console.log('--------------')
+      console.log(count)
+      return {
+        count,
+
+        nested: {
+          count
+        }
+      }
+    },
   data() {
     return {
       testa: 'i',
