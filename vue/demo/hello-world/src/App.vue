@@ -1,20 +1,53 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <img alt="Vue logo" src="./assets/logo.png">
   <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <MyComponent01/>
+  <MyComponent01/> -->
+  <!-- <button
+    v-for="tab in tabs"
+    :key="tab"
+    :class="['tab-button', { active: currentTab1 === tab }]"
+    @click="onclick(tab)"
+  >
+    {{ tab }}
+  </button> -->
+  <div>
+    <TestCom/>
+    <!-- <keep-alive><TestCom :is="currentTabComponent1"></TestCom></keep-alive> -->
+  </div>
+  <!-- <TestCom></TestCom> -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-import MyComponent01 from './components/MyComponent01.vue'
+// import HelloWorld from './components/HelloWorld.vue'
+// import MyComponent01 from './components/MyComponent01.vue'
+import TestCom from "./components/TestCom.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
-    MyComponent01
-  }
-}
+    // HelloWorld,
+    TestCom,
+    // MyComponent01
+  },
+  methods: {
+    onclick(tab) {
+      console.log(tab)
+      this.currentTab1 = tab
+    }
+  },
+  computed: {
+    currentTabComponent1() {
+      console.log("tab1-" + this.currentTab1.toLowerCase());
+      return "tab1-" + this.currentTab1.toLowerCase();
+    },
+  },
+  data() {
+    return {
+      currentTab1: "Home",
+      tabs: ["Home", "Posts", "Archive"],
+    };
+  },
+};
 </script>
 
 <style>
@@ -25,5 +58,36 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.demo {
+  font-family: sans-serif;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 20px 30px;
+  margin-top: 1em;
+  margin-bottom: 40px;
+  user-select: none;
+  overflow-x: auto;
+}
+
+.tab-button {
+  padding: 6px 10px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background: #f0f0f0;
+  margin-bottom: -1px;
+  margin-right: -1px;
+}
+.tab-button:hover {
+  background: #e0e0e0;
+}
+.tab-button.active {
+  background: #e0e0e0;
+}
+.demo-tab {
+  border: 1px solid #ccc;
+  padding: 10px;
 }
 </style>
