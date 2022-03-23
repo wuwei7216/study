@@ -11,7 +11,7 @@
     {{ tab }}
   </button> -->
   <div>
-    <TestCom/>
+    <TestCom v-model="currentTab1"/>
     <!-- <keep-alive><TestCom :is="currentTabComponent1"></TestCom></keep-alive> -->
   </div>
   <!-- <TestCom></TestCom> -->
@@ -33,6 +33,11 @@ export default {
     onclick(tab) {
       console.log(tab)
       this.currentTab1 = tab
+    }
+  },
+  watch: {
+    currentTab1(val){
+      console.log(val)
     }
   },
   computed: {
