@@ -38,8 +38,8 @@ export default {
   },
   setup() {
       const count = ref(0)
-      console.log('--------------')
-      console.log(count)
+      // console.log('--------------')
+      // console.log(count)
       return {
         count,
 
@@ -59,19 +59,36 @@ export default {
       }
     }
   },
+  unmounted() {
+    console.log('helloworld unmounted')
+  },
   mounted() {
+    console.log('helloworld mounted')
     this.temData = 2
+    setTimeout(() => {
+      this.$
+    }, 3000)
+  },
+  
+  updated() {
+    console.log('hellower  updated')
+  },
+  activated() {
+    console.log('helloworld activated!')
+  },
+  deactivated() {
+    console.log('helloworld deacti')
   },
   computed: {
     temData: {
       get() {
-        console.log('111111111111')
+        // console.log('111111111111')
         return this.testa + this.testb
       },
-      set(newValue,oldVale) {
-        console.log(newValue)
-        console.log(oldVale) //undefined
-      }
+      // set(newValue,oldVale) {
+      //   console.log(newValue)
+      //   console.log(oldVale) //undefined
+      // }
     }
   },
   methods: {

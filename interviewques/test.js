@@ -130,15 +130,92 @@
 
 //   obj.count = 1
 //   obj.count
-var obj = {a: 1}
-var oldVal = obj.a
-var test = Object.defineProperty(obj, 'a', {
-	get() {
-		return oldVal
-	}
-})
+// var obj = {a: 1}
+// var oldVal = obj.a
+// var test = Object.defineProperty(obj, 'a', {
+// 	get() {
+// 		return oldVal
+// 	}
+// })
 
-console.log(test === obj)
+// console.log(test === obj)
 
-console.log(obj.a)
+// console.log(obj.a)
+
+// 今日头条面试题
+
+// async function async1() {
+
+// 	console.log('async1 start')
+  
+// 	await async2()
+  
+// 	console.log('async1 end')
+
+// 	await async2()
+  
+// 	console.log('async1 end')
+  
+//   }
+  
+//   async function async2() {
+  
+// 	console.log('async2')
+  
+//   }
+  
+//   console.log('script start')
+  
+//   setTimeout(function () {
+  
+// 	console.log('settimeout')
+  
+//   })
+  
+//   async1()
+  
+//   new Promise(function (resolve) {
+  
+// 	console.log('promise1')
+  
+// 	resolve()
+  
+//   }).then(function () {
+  
+// 	console.log('promise2')
+  
+//   })
+  
+//   console.log('script end')
+
+
+try {
+	new Promise((resolve, reject) => {
+		console.log(1)
+		resolve('a')
+	}).then((res, rej) => {
+		console.log(res)
+		throw new Error('-----')
+	}).then((res) => {
+		console.log('resa1', res)
+	}, rej => {
+		console.log('reja1', rej)
+		return 'ww'
+	}).then((res) => {
+		console.log('resa2', res)
+		return 33
+	}, rej => {
+		console.log('reja2', rej)
+	}).catch(error => {
+		console.log('err', error)
+	}).then(res => {
+		console.log('22', res);
+		throw new Error('44444')
+	}, rej => console.log('33', rej))
+	.catch(error => console.log('3333', error))
+} catch (error) {
+	console.log('---23', error)
+}
+
+  
 
