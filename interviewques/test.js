@@ -189,33 +189,104 @@
 //   console.log('script end')
 
 
-try {
-	new Promise((resolve, reject) => {
-		console.log(1)
-		resolve('a')
-	}).then((res, rej) => {
-		console.log(res)
-		throw new Error('-----')
-	}).then((res) => {
-		console.log('resa1', res)
-	}, rej => {
-		console.log('reja1', rej)
-		return 'ww'
-	}).then((res) => {
-		console.log('resa2', res)
-		return 33
-	}, rej => {
-		console.log('reja2', rej)
-	}).catch(error => {
-		console.log('err', error)
-	}).then(res => {
-		console.log('22', res);
-		throw new Error('44444')
-	}, rej => console.log('33', rej))
-	.catch(error => console.log('3333', error))
-} catch (error) {
-	console.log('---23', error)
-}
+// try {
+// 	new Promise((resolve, reject) => {
+// 		console.log(1)
+// 		resolve('a')
+// 	}).then((res, rej) => {
+// 		console.log(res)
+// 		throw new Error('-----')
+// 	}).then((res) => {
+// 		console.log('resa1', res)
+// 	}, rej => {
+// 		console.log('reja1', rej)
+// 		return 'ww'
+// 	}).then((res) => {
+// 		console.log('resa2', res)
+// 		return 33
+// 	}, rej => {
+// 		console.log('reja2', rej)
+// 	}).catch(error => {
+// 		console.log('err', error)
+// 	}).then(res => {
+// 		console.log('22', res);
+// 		throw new Error('44444')
+// 	}, rej => console.log('33', rej))
+// 	.catch(error => console.log('3333', error))
+// } catch (error) {
+// 	console.log('---23', error)
+// }
 
+// 在异步函数中抛出的错误不会被catch捕获到
+// new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         throw 'Uncaught Exception!';
+//     }, 1000);
+// }).catch(() => {
+//     console.log('err'); //不会执行
+// });
+
+// new Promise((resolve, reject) => {
+// 	console.log('222')
+//     setTimeout(() => {
+//         reject();
+//     }, 1000);
+// }).catch(() => {
+//     console.log('err'); //err
+// })
+
+// Promise.resolve('1').then(res => console.log(res))
+
+// 实现一个 Scheduler 类，完成对Promise的并发处理，最多同时执行2个任务
+// class Scheduler {
+//     constructor() {
+//         this.tasks = [], // 待运行的任务
+//         this.usingTask = [] // 正在运行的任务
+//     }
+//     // promiseCreator 是一个异步函数，return Promise
+//     add(promiseCreator) {
+//         return new Promise((resolve, reject) => {
+//             promiseCreator.resolve = resolve
+//             if (this.usingTask.length < 2) {
+//                 this.usingRun(promiseCreator)
+//             } else {
+//                 this.tasks.push(promiseCreator)
+//             }
+//         })
+//     }
+
+//     usingRun(promiseCreator) {
+//         this.usingTask.push(promiseCreator)
+//         promiseCreator().then(() => {
+//             promiseCreator.resolve()
+//             this.usingMove(promiseCreator)
+//             if (this.tasks.length > 0) {
+//                 this.usingRun(this.tasks.shift())
+//             }
+//         })
+//     }
+
+//     usingMove(promiseCreator) {
+//         let index = this.usingTask.findIndex(promiseCreator)
+//         this.usingTask.splice(index, 1)
+//     }
+// }
+
+// const timeout = (time) => new Promise(resolve => {
+//     setTimeout(resolve, time)
+// })
+
+// const scheduler = new Scheduler()
+
+// const addTask = (time, order) => {
+//     scheduler.add(() => timeout(time)).then(() => console.log(order))
+// }
+
+// addTask(400, 4) 
+// addTask(100, 2) 
+// addTask(300, 3) 
+
+setTimeout(() => console.log('111'), 2000)
+setTimeout(() => console.log('222'), 500)
   
 
