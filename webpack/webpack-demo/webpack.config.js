@@ -14,13 +14,18 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
+    publicPath: '/',
+  },
+  devServer: {
+    static: './dist',
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: '管理输出',
+      title: 'development',
     }),
   ],
+  devtool: 'inline-source-map',
 };
 
 module.exports = config
