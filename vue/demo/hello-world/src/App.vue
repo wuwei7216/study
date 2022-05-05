@@ -1,6 +1,6 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png">
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>
   <MyComponent01/> -->
   <!-- <button
     v-for="tab in tabs"
@@ -16,21 +16,24 @@
     <div class="ico ico-c"></div>
     <!-- <TestCom v-model="currentTab1"/> -->
     <!-- <keep-alive><TestCom :is="currentTabComponent1"></TestCom></keep-alive> -->
+    <!-- <TestCom></TestCom> -->
+    <Lazy-Load></Lazy-Load>
   </div>
-  <!-- <TestCom></TestCom> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import MyComponent01 from './components/MyComponent01.vue'
 // import TestCom from "./components/TestCom.vue";
+import LazyLoad from "./components/LazyLoad.vue";
 
 export default {
   name: "App",
   components: {
     // HelloWorld,
     // TestCom,
-    // MyComponent01
+    // MyComponent01,
+    LazyLoad
   },
   methods: {
     onclick(tab) {
