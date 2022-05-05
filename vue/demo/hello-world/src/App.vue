@@ -11,7 +11,10 @@
     {{ tab }}
   </button> -->
   <div>
-    <TestCom v-model="currentTab1"/>
+    <div class="ico ico-a"></div>
+    <div class="ico ico-b"></div>
+    <div class="ico ico-c"></div>
+    <!-- <TestCom v-model="currentTab1"/> -->
     <!-- <keep-alive><TestCom :is="currentTabComponent1"></TestCom></keep-alive> -->
   </div>
   <!-- <TestCom></TestCom> -->
@@ -20,13 +23,13 @@
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
 // import MyComponent01 from './components/MyComponent01.vue'
-import TestCom from "./components/TestCom.vue";
+// import TestCom from "./components/TestCom.vue";
 
 export default {
   name: "App",
   components: {
     // HelloWorld,
-    TestCom,
+    // TestCom,
     // MyComponent01
   },
   methods: {
@@ -56,6 +59,7 @@ export default {
 </script>
 
 <style>
+@import '~@/spritesmith-generated/sprite.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

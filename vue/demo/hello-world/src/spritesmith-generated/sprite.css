@@ -1,0 +1,4 @@
+.ico { background-image: url(~sprite.png) }
+.ico-a { width: 143px; height: 115px; background-position: -143px 0px; }
+.ico-b { width: 136px; height: 125px; background-position: 0px -123px; }
+.ico-c { width: 143px; height: 123px; background-position: 0px 0px; }
