@@ -1,5 +1,4 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/>
   <MyComponent01/> -->
   <!-- <button
@@ -11,6 +10,7 @@
     {{ tab }}
   </button> -->
   <div>
+  <img alt="Vue logo" src="./assets/logo.png">
     <div class="ico ico-a"></div>
     <div class="ico ico-b"></div>
     <div class="ico ico-c"></div>

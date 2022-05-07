@@ -46,13 +46,18 @@ module.exports = {
     ]
     config.plugins = [...config.plugins, ...plugins]
   },
-  chainWebpack: config => {
-    config.module
-      .rule('images')
-        .use('url-loader')
-          .loader('url-loader')
-          .tap(options => Object.assign(options || {}, { limit: 1 }))
-  }
+  // chainWebpack(config) {
+  //   config.module.rule("discompile-image")
+  //     .test(/\.png$/) // 带有.discompile的文件不被编译为base64
+  //     .use("url-loader")
+  //     .loader("url-loader") // 使用url-loader或file-loader
+  //     .options({
+  //       // 小于1字节的文件编译为base64
+  //       limit: 10000000, 
+  //       // 导出地址，导出名
+  //       // name: "static/[name].[hash:8].[ext]"
+  //     })
+  // }
 }
 
 
