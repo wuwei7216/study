@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <a href="http://localhost:4000/getData">11111</a>
+  <form action="http://localhost:4000/getData" method="get">
+    <input type="submit" value="1234">
+  </form>
+  <link rel="prerender" href="http://localhost:4000/getData"/>
+  <script type="text/javascript">
+    // index.html
+    var xhr = new XMLHttpRequest()
+    // document.cookie = 'name=xiamen' // cookie不能跨域
+    xhr.withCredentials = true // 前端设置是否带cookie
+    xhr.open('GET', 'http://localhost:4000/getData', true)
+    // xhr.setRequestHeader('name', 'xiamen')
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+          console.log(xhr.response)
+          //得到响应头，后台需设置Access-Control-Expose-Headers
+          console.log(xhr.getResponseHeader('name'))
+        }
+      }
+    }
+    xhr.send()
+
+  </script>
+</body>
+</html>
