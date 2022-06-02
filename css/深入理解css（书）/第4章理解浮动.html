@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第4章理解浮动</title>
+</head>
+<style>
+  :root {
+    box-sizing: border-box;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: #eee;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  /* 猫头鹰选择器 会选中直接跟在其他元素后面的任何元素(这种设计是针对并列元素的，为所有并列元素添加间距) */
+  body *+* {
+    margin-top: 1.5em;
+  }
+
+  header {
+    /* 不设置高度，内部元素将自动垂直居中 */
+    padding: 1em 1.5em;
+    color: #fff;
+    background-color: #0072b0;
+    border-radius: .5em;
+  }
+
+  .main {
+    width: 70%;
+    padding: 1em 1.5em;
+    background-color: #fff;
+    border-radius: .5em;
+  }
+
+  .media {
+    float: left;
+    /* 给每个媒体元素加上右侧和底部的外边距 （同时去除猫头鹰选择器对并列元素的影响）*/
+    margin: 0 1.5em 1.5em 0;
+    /* 给媒体元素加上右外边距后，需要从宽度中减去外边距，防止出现不必要的换行 */
+    width: calc(50% - 1.5em);
+    padding: 1.5em;
+    background-color: #eee;
+    border-radius: 0.5em;
+  }
+
+  .media:nth-child(odd) {
+    clear: left
+  }
+
+  .media-image {
+    /* 图片左浮动 */
+    float: left;
+    margin-right: 1.5em;
+  }
+
+  .media-body {
+    /* 创建BFC */
+    overflow: auto;
+    margin-top: 0;
+  }
+
+  .media-body h4 {
+    margin-top: 0;
+  }
+
+  .clearfix::before,
+  .clearfix::after {
+    /* 防止伪元素的外边距重叠 */
+    display: table;
+    /* 这个属性必须写，否则等于没有这个伪元素 */
+    content: "";
+  }
+
+  .clearfix::after {
+    /* 只有after伪元素需要清除浮动 */
+    clear: both;
+  }
+</style>
+
+<body>
+  <!--  -->
+  <div class="container">
+    <header>
+      <h1>Franklin Running Club</h1>
+    </header>
+    <main class="main clearfix">
+      <h2>Running tips</h2>
+      <div>
+        <div>
+          <div class="media">
+            <img class="media-image"
+              src="data:image/png;base64,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">
+            <div class="media-body">
+              <h4>Strength</h4>
+              <p>
+                Strength training is an important part of injury prevention. Focus on your core&mdash; especially your
+                abs and glutes.
+              </p>
+            </div>
+          </div>
+          <div class="media">
+            <img class="media-image"
+              src="data:image/png;base64,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">
+            <div class="media-body">
+              <h4>Cadence</h4>
+              <p>Check your stride turnover. The most efficient
+                runners take about 180 steps per minute.
+              </p>
+            </div>
+          </div>
+          <div class="media">
+            <img class="media-image"
+              src="data:image/png;base64,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">
+            <div class="media-body">
+              <h4>Change it up</h4>
+              <p>
+                Don’t run the same every time you hit the road. Vary your pace, and vary the distance of your runs.
+              </p>
+            </div>
+          </div>
+          <div class="media">
+            <img class="media-image"
+              src="data:image/png;base64,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">
+            <div class="media-body">
+              <h4>Focus on form</h4>
+              <p>Run tall but relaxed. Your feet should hit the ground beneath your hips, not out in front of you.
+              </p>
+            </div>
+          </div>
+        </div>
+    </main>
+  </div>
+</body>
+
+</html>

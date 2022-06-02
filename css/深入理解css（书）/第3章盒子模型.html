@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>盒子模型</title>
+</head>
+<style>
+  :root {
+    box-sizing: border-box;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    background-color: #eee;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  /* 猫头鹰选择器 会选中直接跟在其他元素后面的任何元素(这种设计是针对并列元素的，为所有并列元素添加间距) */
+  body *+* {
+    margin-top: 1.5em;
+  }
+
+  header {
+    /* 不设置高度，内部元素将自动垂直居中 */
+    padding: 1em 1.5em;
+    color: #fff;
+    background-color: #0072b0;
+    border-radius: .5em;
+  }
+
+  .container {
+    /* 等高布局用 */
+    display: flex;
+  }
+
+  .main {
+    width: 70%;
+    padding: 1em 1.5em;
+    background-color: #fff;
+    border-radius: .5em;
+  }
+
+  .sidebar {
+    width: 30%;
+    padding: 1.5em;
+    margin-top: 0;
+    margin-left: 1.5em;
+    background-color: #fff;
+    border-radius: .5em;
+  }
+
+  .button-link {
+    display: block;
+    padding: .5em;
+    color: #fff;
+    background-color: #0090C9;
+    /* 水平居中 */
+    text-align: center;
+    /* 去掉下划线 */
+    text-decoration: none;
+    /* 转大写 */
+    text-transform: uppercase;
+  }
+
+  .sponsor-link {
+    display: block;
+    color: #0072b0;
+    font-weight: bold;
+    text-decoration: none;
+  }
+</style>
+
+<body>
+  <!-- 等高列 -->
+  <header>
+    <hl>Franklin Running Club</hl>
+  </header>
+  <div class="wrapper">
+    <div class="container">
+      <main class="main">
+        <h2>Come join us!</h2>
+        <p>The Franklin Running club meets at 6:00pm every Thursday at the town square. Runs are three to five miles,
+          at.
+          your own pace.
+        </p>
+      </main>
+      <aside class="sidebar">
+        <a href="/twitter" class="button-link">follow us on twitter</a>
+        <a href="/twitter" class="button-link">follow us on twitter</a>
+        <a href="/twitter" class="sponsor-link">become a sponsor</a>
+      </aside>
+    </div>
+  </div>
+</body>
+
+</html>
