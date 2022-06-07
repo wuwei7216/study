@@ -84,9 +84,24 @@
   }
 
   .container {
+    display: flex;
     width: 80%;
     max-width: 1000px;
     margin: 1em auto;
+    min-height: 100vh;
+  }
+
+  .col-main {
+    flex: 1 80%
+  }
+
+  .col-sidebar {
+    flex: 20%
+  }
+
+  .affix {
+    position: sticky;
+    top: 1em;
   }
 
   .dropdown {
@@ -121,6 +136,7 @@
   .dropdown:hover .dropdown-menu {
     display: block;
   }
+
   .dropdown:hover .dropdown-label::after {
     top: .7em;
     border-color: transparent transparent black;
@@ -174,21 +190,34 @@
     </div>
   </div>
   <div class="container">
-    <nav>
-      <div class="dropdown">
-        <div class="dropdown-label">Main Menu</div>
-        <div class="dropdown-menu">
-          <ul class="submenu">
-            <li><a href="/">Home</a></li>
-            <li><a href="/cof fees">Coffees</a></li>
-            <li><a href="/brewers">Brewers</a></ii>
-            <li><a href="/specials">Specials</a></li>
-            <li><a href="/about">About us</a></li>
-          </ul>
+    <main class="col-main">
+      <nav>
+        <div class="dropdown">
+          <div class="dropdown-label">Main Menu</div>
+          <div class="dropdown-menu">
+            <ul class="submenu">
+              <li><a href="/">Home</a></li>
+              <li><a href="/cof fees">Coffees</a></li>
+              <li><a href="/brewers">Brewers</a></ii>
+              <li><a href="/specials">Specials</a></li>
+              <li><a href="/about">About us</a></li>
+            </ul>
+          </div>
         </div>
+      </nav>
+      <h1>Wombat Coffee Roasters</h1>
+    </main>
+    <aside class="clo-sidebar">
+      <div class="affix">
+        <ul class="submenu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/cof fees">Coffees</a></li>
+          <li><a href="/brewers">Brewers</a></ii>
+          <li><a href="/specials">Specials</a></li>
+          <li><a href="/about">About us</a></li>
+        </ul>
       </div>
-    </nav>
-    <h1>Wombat Coffee Roasters</h1>
+    </aside>
   </div>
   <script type="text/javascript">
     var button = document.getElementById('open');
