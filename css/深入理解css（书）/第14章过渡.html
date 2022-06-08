@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .button--transition {
+    background-color: hsl(180, 50%, 50%);
+    border: 0;
+    color: white;
+    font-size: 1rem;
+    padding: .3em 1em;
+    /* 所有属性变化都使用过渡效果 */
+    transition-property: all;
+    /* 过度时间 */
+    transition-duration: 0.5s;
+  }
+
+  .button--transition:hover {
+    background-color: hsl(0, 50%, 50%);
+    border-radius: 1em;
+  }
+
+  /* 过渡的盒子 */
+  .container {
+    position: relative;
+    height: 30px;
+  }
+
+  .box {
+    position: absolute;
+    left: 0;
+    height: 30px;
+    width: 30px;
+    background-color: hsl(130, 50%, 50%);
+    /* 设置过渡，平滑向右移动 */
+    transition: all 1s linear;
+  }
+
+  .container:hover .box {
+    left: 400px;
+  }
+
+  /* 淡入淡出菜单 */
+  body {
+    font-family: Helvetica, Arial, sans-serif;
+  }
+
+  .dropdown_toggle {
+    display: block;
+    padding: 0.5em 1em;
+    border: 1px solid hsl(280, 10%, 80%);
+    color: hsl(280, 30%, 60%);
+    background-color: white;
+    font: inherit;
+    text-decoration: none;
+    transition: background-color 0.2s linear;
+  }
+
+  .dropdown_toggle:hover {
+    background-color: hsl(280, 15%, 95%);
+  }
+
+  .dropdown_drawer {
+    position: absolute;
+    /* display: none; */
+    /* opacity: 0; */
+    /* visibility: hidden; */
+    background-color: white;
+    width: 10em;
+    height: 0;
+    overflow: hidden;
+    /* visibility不支持淡入淡出，但是支持延时transition-delay属性，display都不支持 */
+    /* 在这里待opacity过渡完后，将元素转为hidden */
+    /* transition: opacity 0.5s linear, visibility 0s linear 0.5s, height 0.5s linear; */
+    transition: height 0.5s ease-out;
+  }
+
+  .dropdown.is-open .dropdown_drawer {
+    /* display: block; */
+    /* opacity: 1; */
+    /* visibility: visible; */
+    /* 打开的时候不需要延时，打开前visibility为hidden，opacity不生效，需要立即转为visible，然后才会出现淡入效果 */
+    /* transition-delay: 0s; */
+  }
+
+  .menu {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .menu>li+li>a {
+    border-top: 0;
+  }
+
+  .menu>li>a {
+    display: block;
+    padding: 0.5em 1em;
+    color: hsl(280, 40%, 60%);
+    background-color: white;
+    text-decoration: none;
+    transition: all.2s linear;
+    border: 1px solid hsl(280, 10%, 80%);
+  }
+
+  .menu>li>a:hover {
+    background-color: hsl(280, 15%, 95%);
+    color: hsl(280, 25%, 10%);
+  }
+</style>
+
+<body>
+  <button class="button--transition">Hover over me</button>
+  <hr>
+  <div class="container">
+    <div class="box"></div>
+  </div>
+  <hr>
+  <!-- 淡入淡出菜单 -->
+  <div class="dropdown" aria-haspopup="true"><button class="dropdown_toggle">Menu</button>
+    <div class="dropdown_drawer">
+      <ul class="menu" role="menu">
+        <li role="menuitem"><a href="/features">Features</a></1i>
+        <li role="menuitem"><a href="/pricing">Pricing</a></1i>
+        <li role="menuitem"><a href="/support">Support</a></1i>
+        <li role="menuitem"><a href="/about">About</a></1i>
+      </ul>
+    </div>
+  </div>
+  <p><a href="/read-more">Read more</a></p>
+
+  <script type="text/javascript">
+    (function () {
+      var toggle = document.getElementsByClassName('dropdown_toggle')[0];
+      var dropdown = toggle.parentElement;
+      var drawer = document.getElementsByClassName('dropdown_drawer')[0];
+      var height = drawer.scrollHeight;
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        dropdown.classList.toggle('is-open');
+        if (dropdown.classList.contains('is-open')) {
+          drawer.style.setProperty('height', height + 'px')
+        } else {
+          drawer.style.setProperty('height', '0')
+        }
+      });
+    }());
+  </script>
+</body>
+
+</html>
