@@ -1,0 +1,2 @@
+(()=>{"use strict";let e=((t=document.createElement("pre")).innerHTML=["Hello webpack!","5 cubed is equal to "+(n=5,n*n*n)].join("\n\n"),t);var n,t;document.body.appendChild(e)})();
+//# sourceMappingURL=app.bundle.js.map
