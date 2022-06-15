@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // import { Configuration } from 'webpack' 放开后可以看到webpack配置提示
 
 /**
@@ -8,7 +9,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
  const config = {
   mode: 'development',
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    print: './src/print.js'
   },
   output: {
     filename: '[name].bundle.js',
@@ -19,6 +21,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
     static: './dist',
   },
   plugins: [
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'development',
     }),
