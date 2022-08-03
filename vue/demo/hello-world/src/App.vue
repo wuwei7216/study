@@ -10,14 +10,12 @@
     {{ tab }}
   </button> -->
   <div>
-  <img alt="Vue logo" src="./assets/logo.png">
+    <!-- <img alt="Vue logo" src="./assets/logo.png" />
     <div class="ico ico-a"></div>
     <div class="ico ico-b"></div>
     <div class="ico ico-c"></div>
-    <!-- <TestCom v-model="currentTab1"/> -->
-    <!-- <keep-alive><TestCom :is="currentTabComponent1"></TestCom></keep-alive> -->
-    <!-- <TestCom></TestCom> -->
-    <Lazy-Load></Lazy-Load>
+    <Lazy-Load></Lazy-Load> -->
+    <provide-inject />
   </div>
 </template>
 
@@ -25,7 +23,8 @@
 // import HelloWorld from './components/HelloWorld.vue'
 // import MyComponent01 from './components/MyComponent01.vue'
 // import TestCom from "./components/TestCom.vue";
-import LazyLoad from "./components/LazyLoad.vue";
+// import LazyLoad from "./components/LazyLoad.vue";
+import ProvideInject from "./view/provide-inject"
 
 export default {
   name: "App",
@@ -33,18 +32,19 @@ export default {
     // HelloWorld,
     // TestCom,
     // MyComponent01,
-    LazyLoad
+    // LazyLoad,
+    ProvideInject
   },
   methods: {
     onclick(tab) {
-      console.log(tab)
-      this.currentTab1 = tab
-    }
+      console.log(tab);
+      this.currentTab1 = tab;
+    },
   },
   watch: {
-    currentTab1(val){
-      console.log(val)
-    }
+    currentTab1(val) {
+      console.log(val);
+    },
   },
   computed: {
     currentTabComponent1() {
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style>
-@import '~@/spritesmith-generated/sprite.css';
+@import "~@/spritesmith-generated/sprite.css";
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

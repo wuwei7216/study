@@ -11,26 +11,29 @@
   <div class="div2"></div>
   <div class="div3"></div>
   <style>
+    :root {
+      --cell-side: 30px
+    }
     .div1 {
       background-color: red;
-      width: 200px;
+      width: calc(var(--cell-side) * 5 );
       height: 200px;
     }
     .div2 {
-      background-color: yellow;
+      /* background-color: yellow;
       width: 200px;
       height: 200px;
       margin-top: -100px;
       margin-left: 100px;
-      z-index: 2;
+      z-index: 2; */
     }
     .div3 {
-      background-color: blue;
+      /* background-color: blue;
       width: 200px;
       height: 200px;
       margin-top: -100px;
       margin-left: 200px;
-      z-index: 1;
+      z-index: 1; */
     }
   </style>
 </body>
