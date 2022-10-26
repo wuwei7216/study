@@ -18,7 +18,6 @@ const routes = [
     component: About
   }
 ]
-debugger
 const router = createRouter({
   history: createWebHashHistory(),
   routes
