@@ -9,20 +9,27 @@
 </head>
 <body>
   <div id="app">
-    {{message}}
-    {{a.b.c}}
+    <!-- {{message}}
+    {{a.b.c}} -->
   </div>
   <script type="text/javascript">
     var app = new Vue({
       el: '#app',
       data: {
-        message: 'hah',
-        a: {
-          b: {}
-        }
+        // message: 'hah',
+        // a: {
+        //   b: {}
+        // },
+        testProp: {}
       },
       created: function () {
-        this.a.b.c = 'hah'
+        // this.a.b.c = 'hah'
+        debugger
+        const temp = {}
+        // window.testWu = temp
+        // console.log(temp === window.testWu)
+        this.testProp = temp
+        // console.log(this.testProp === temp)
       }
     })
     console.log(app)
